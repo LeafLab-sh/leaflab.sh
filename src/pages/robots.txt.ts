@@ -1,8 +1,7 @@
 import type { APIRoute } from "astro";
 
 const getRobotsTxt = (sitemapURL: URL) => `\
-User-agent: *
-Allow: /
+# Cloudflare Managed content expected above
 
 Sitemap: ${sitemapURL.href}
 `;

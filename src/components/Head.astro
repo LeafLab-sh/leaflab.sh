@@ -2,11 +2,12 @@
 import "../assets/css/global.css";
 import { Font } from "astro:assets";
 
-const {
-  title = "LeafLab",
-  description = "The website for LeafLab.sh",
-  ...props
-} = Astro.props;
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "The website for LeafLab.sh" } = Astro.props;
 ---
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
