@@ -1,0 +1,19 @@
+---
+import "../assets/css/global.css";
+import { Font } from "astro:assets";
+
+const {
+  title = "LeafLab",
+  description = "The website for LeafLab.sh",
+  ...props
+} = Astro.props;
+---
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<Font cssVariable="--font-source-code-pro" />
