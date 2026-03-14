@@ -10,6 +10,6 @@ export default defineConfig({
       enabled: true
     },
 
-    imageService: "cloudflare"
+    imageService: "compile"
   })
 });
