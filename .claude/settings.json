@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "input=$(cat); echo \"$input\" | grep -q 'deploy:production' && echo 'Blocked: deploy:production must run via GitHub Actions, not locally.' >&2 && exit 2; exit 0"
+            "command": "input=$(cat); echo \"$input\" | grep -q '\"command\".*run deploy:production' && echo 'Blocked: deploy:production must run via GitHub Actions, not locally.' >&2 && exit 2; exit 0"
           }
         ]
       }
