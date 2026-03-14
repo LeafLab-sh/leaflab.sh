@@ -1,0 +1,4 @@
+Contact: mailto:admin@leaflab.sh
+Expires: 2026-12-31T07:00:00.000Z
+Preferred-Languages: en
+Canonical: https://leaflab.sh/.well-known/security.txt
