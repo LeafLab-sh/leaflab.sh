@@ -55,7 +55,7 @@ importers:
         specifier: 8.48.0
         version: 8.48.0(eslint@9.39.2)(typescript@5.8.3)
       vite:
-        specifier: ^6.0.0
+        specifier: ^6.4.1
         version: 6.4.1(@types/node@24.10.1)
       wrangler:
         specifier: 4.72.0
