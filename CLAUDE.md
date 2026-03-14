@@ -8,7 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 bun run dev          # Start dev server at localhost:4321
 bun run build        # Build to ./dist/
 bun run preview      # Build + run via Wrangler locally (simulates Cloudflare)
-bun run deploy       # Build + deploy to Cloudflare
+bun run deploy            # Build + deploy to Cloudflare (dev)
+bun run deploy:production # Build + deploy to Cloudflare (production)
 bun run cf-typegen   # Regenerate Cloudflare Worker type definitions
 ```
 
@@ -37,16 +38,17 @@ Build output splits into `dist/client/` (static assets) and `dist/server/` (Work
 
 **Platform proxy** is enabled in `astro.config.mjs`, so `bun run dev` simulates the Cloudflare runtime locally without needing to deploy.
 
-Deployment targets the `leaflab.sh` custom domain as configured in `wrangler.jsonc`.
+Wrangler environments are configured in `wrangler.jsonc`: the default environment targets `leaflab-website-dev` (no custom domain); `--env production` targets `leaflab-website` with the `leaflab.sh` custom domain.
 
 ## Release & Deployment
 
 Releases are automated via [release-please](https://github.com/googleapis/release-please) (`.github/workflows/release-please.yml`):
 
 1. Every push to `main` triggers release-please, which reads conventional commits since the last release and opens (or updates) a release PR that bumps `package.json`, updates `CHANGELOG.md`, and tags the release.
-2. When the release PR is merged, release-please detects the release and triggers the `deploy` job, which runs `bun run deploy` in the `production` GitHub environment.
+2. Every push to `main` also triggers `deploy-dev`, deploying to the `leaflab-website-dev` Cloudflare Worker via the `development` GitHub environment.
+3. When the release PR is merged, `deploy-production` runs and deploys to the `leaflab-website` Cloudflare Worker with the `leaflab.sh` custom domain, via the `production` GitHub environment.
 
-The `production` environment is restricted to deployments from `main` only. The deploy job requires two repository secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+Both environments are restricted to `main` only. Both deploy jobs require two secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 
 ## Brand Voice
 
