@@ -14,6 +14,8 @@ bun run cf-typegen   # Regenerate Cloudflare Worker type definitions
 
 No lint or test commands are configured.
 
+**Conventional commits are required.** Commitlint enforces the [Conventional Commits](https://www.conventionalcommits.org/) spec via a Husky commit-msg hook. Every commit message must follow the `type: description` format (e.g. `feat:`, `fix:`, `chore:`). This is what release-please uses to determine version bumps and generate the changelog.
+
 ## Architecture
 
 **Astro + Cloudflare Workers** — Astro handles file-based routing and SSR; the `@astrojs/cloudflare` adapter compiles the output to run on Cloudflare Workers at the edge.
@@ -37,12 +39,15 @@ Build output splits into `dist/client/` (static assets) and `dist/server/` (Work
 
 Deployment targets the `leaflab.sh` custom domain as configured in `wrangler.jsonc`.
 
-## Brand Voice Skill
+## Release & Deployment
 
-A Claude Code skill for writing in LeafLab's voice is bundled at `.claude/skills/leaflab-branding.skill`. Install it once to enable auto-triggering whenever you write content for the site:
+Releases are automated via [release-please](https://github.com/googleapis/release-please) (`.github/workflows/release-please.yml`):
 
-```bash
-claude skill install .claude/skills/leaflab-branding.skill
-```
+1. Every push to `main` triggers release-please, which reads conventional commits since the last release and opens (or updates) a release PR that bumps `package.json`, updates `CHANGELOG.md`, and tags the release.
+2. When the release PR is merged, release-please detects the release and triggers the `deploy` job, which runs `bun run deploy` in the `production` GitHub environment.
 
-A `/leaflab-branding` slash command is also available in `.claude/commands/` without any installation.
+The `production` environment is restricted to deployments from `main` only. The deploy job requires two repository secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+
+## Brand Voice
+
+A `/leaflab-branding` slash command is available in `.claude/commands/`. Run it before writing any site content to load LeafLab's voice and tone guidelines.
