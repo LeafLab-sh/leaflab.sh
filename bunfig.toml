@@ -1,0 +1,16 @@
+[install]
+# Keep using the human-readable text lockfile (already in use as bun.lock)
+saveTextLockfile = true
+
+# Use isolated installs (pnpm-style) to prevent phantom dependency access
+# — matches the project's strict TypeScript config ethos
+linker = "isolated"
+
+[run]
+# Use Bun's built-in cross-platform shell for scripts (important on Windows)
+shell = "bun"
+
+[test]
+# Configure bun test defaults for when tests are added
+timeout = 10000
+coverage = false
