@@ -36,8 +36,9 @@
 	"scripts": {
 		"build": "tsc -b && vite build",
 		"cf-typegen": "wrangler types",
-		"check": "tsc && vite build && wrangler deploy --dry-run",
-		"deploy": "wrangler deploy",
+		"check": "tsc && vite build && wrangler deploy --dry-run --env dev",
+		"deploy": "wrangler deploy --env dev",
+		"deploy:prod": "node -e \"if (!process.env.CF_PAGES && !process.env.CI) { console.error('Production deploys must go through Cloudflare Workers Builds.'); process.exit(1); }\" && wrangler deploy",
 		"dev": "vite",
 		"lint": "eslint .",
 		"preview": "npm run build && vite preview"
