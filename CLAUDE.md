@@ -50,6 +50,22 @@ Releases are automated via [release-please](https://github.com/googleapis/releas
 
 The production deploy job requires two secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 
+## Cloudflare
+
+Always retrieve current docs before working with Workers, KV, R2, D1, Durable Objects, Queues, Vectorize, AI, or Agents SDK — built-in knowledge may be outdated. Use the Cloudflare MCP tools or fetch from `https://developers.cloudflare.com/workers/`. For limits, check the product's `/platform/limits/` page.
+
+Node.js compatibility: https://developers.cloudflare.com/workers/runtime-apis/nodejs/
+
+### Errors
+
+- **Error 1102** (CPU/Memory exceeded): Retrieve limits from `/workers/platform/limits/`
+- **All errors**: https://developers.cloudflare.com/workers/observability/errors/
+
+### Product Docs
+
+Retrieve API references and limits from:
+`/kv/` · `/r2/` · `/d1/` · `/durable-objects/` · `/queues/` · `/vectorize/` · `/workers-ai/` · `/agents/`
+
 ## Brand Voice
 
 A `/leaflab-branding` slash command is available in `.claude/commands/`. Run it before writing any site content to load LeafLab's voice and tone guidelines.
