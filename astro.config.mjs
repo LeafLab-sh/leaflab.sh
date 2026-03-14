@@ -9,8 +9,6 @@ import partytown from "@astrojs/partytown";
 
 import tailwindcss from "@tailwindcss/vite";
 
-import { shield } from "@kindspells/astro-shield";
-
 // https://astro.build/config
 export default defineConfig({
   site: process.env.SITE_URL ?? "https://leaflab.sh",
@@ -19,7 +17,7 @@ export default defineConfig({
     imageService: "compile",
   }),
 
-  integrations: [sitemap(), partytown(), shield({})],
+  integrations: [sitemap(), partytown()],
 
   vite: {
     plugins: [tailwindcss()],

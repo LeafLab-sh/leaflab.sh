@@ -9,7 +9,6 @@
         "@astrojs/cloudflare": "^13.1.1",
         "@astrojs/partytown": "^2.1.5",
         "@astrojs/sitemap": "^3.7.1",
-        "@kindspells/astro-shield": "^1.7.1",
         "@tailwindcss/vite": "^4.2.1",
         "@types/bun": "^1.3.10",
         "@types/node": "^25.5.0",
@@ -210,8 +209,6 @@
     "@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.5", "", {}, "sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og=="],
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
-
-    "@kindspells/astro-shield": ["@kindspells/astro-shield@1.7.1", "", { "peerDependencies": { "astro": "^4.0.0" } }, "sha512-8M6rbXNp1v7CbwIjDXJzlgnPuYHmqTLGAiiMK738AhYE191uWGi6mzEhQEW9U4agDzi6Cq6+WFjJ/ZavYDz4pg=="],
 
     "@oslojs/encoding": ["@oslojs/encoding@1.1.0", "", {}, "sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ=="],
 
