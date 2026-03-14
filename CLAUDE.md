@@ -56,6 +56,16 @@ Always retrieve current docs before working with Workers, KV, R2, D1, Durable Ob
 
 Node.js compatibility: https://developers.cloudflare.com/workers/runtime-apis/nodejs/
 
+### Errors
+
+- **Error 1102** (CPU/Memory exceeded): Retrieve limits from `/workers/platform/limits/`
+- **All errors**: https://developers.cloudflare.com/workers/observability/errors/
+
+### Product Docs
+
+Retrieve API references and limits from:
+`/kv/` · `/r2/` · `/d1/` · `/durable-objects/` · `/queues/` · `/vectorize/` · `/workers-ai/` · `/agents/`
+
 ## Brand Voice
 
 A `/leaflab-branding` slash command is available in `.claude/commands/`. Run it before writing any site content to load LeafLab's voice and tone guidelines.
