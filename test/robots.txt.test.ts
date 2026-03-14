@@ -1,12 +1,5 @@
 import { expect, test } from "vitest";
-
-// getRobotsTxt is not exported from robots.txt.ts, so we replicate the logic
-// here to keep the test self-contained and free of Astro's module system.
-const getRobotsTxt = (sitemapURL: URL) => `\
-# Cloudflare Managed content expected above
-
-Sitemap: ${sitemapURL.href}
-`;
+import { getRobotsTxt } from "../src/pages/robots.txt";
 
 test("getRobotsTxt includes the sitemap URL", () => {
   const url = new URL("sitemap-index.xml", "https://leaflab.sh");
