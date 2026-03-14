@@ -17,13 +17,14 @@ Wrangler wires them together. In production, all traffic hits the Worker; static
 
 ```
 src/
-├── pages/       # File-based routes (.astro → URL path)
-├── layouts/     # HTML shell templates
-├── components/  # Reusable Astro components
-└── env.d.ts     # Extends App.Locals with Cloudflare Runtime bindings
+├── pages/              # File-based routes (.astro → URL path)
+│   └── robots.txt.ts   # Dynamic robots.txt endpoint (links to sitemap)
+├── layouts/            # HTML shell templates
+├── components/         # Reusable Astro components
+└── env.d.ts            # Extends App.Locals with Cloudflare Runtime bindings
 public/          # Static files copied as-is to dist/client/
 wrangler.jsonc   # Cloudflare Worker config (routes, bindings, compatibility flags)
-astro.config.mjs # Astro config (adapter, image service, platform proxy)
+astro.config.mjs # Astro config (adapter, integrations, platform proxy)
 ```
 
 ## Getting Started
@@ -48,6 +49,21 @@ bun run dev     # Dev server at localhost:4321
 | `bun run cf-typegen`   | Regenerate `worker-configuration.d.ts` from `wrangler.jsonc`   |
 
 Use `bun run preview` when you want to verify the Worker behavior before deploying — it runs the actual Wrangler dev server against the compiled output, not the Astro dev server.
+
+## Astro Integrations
+
+Three integrations are active in `astro.config.mjs`:
+
+- **`@astrojs/cloudflare`** — compiles Astro SSR output to run as a Cloudflare Worker
+- **`@astrojs/sitemap`** — auto-generates `/sitemap-index.xml` at build time; linked from `Layout.astro` and referenced in `robots.txt`
+- **`@astrojs/partytown`** — offloads third-party scripts (analytics, tag managers) to a web worker to keep the main thread free. Tag any third-party `<script>` with `type="text/partytown"` to opt it in.
+
+The sitemap and `robots.txt` both depend on the `site` URL. It's set via the `SITE_URL` environment variable, falling back to `https://leaflab.sh`:
+
+```bash
+# Override for staging/preview builds
+SITE_URL=https://staging.leaflab.sh bun run build
+```
 
 ## Cloudflare Workers
 
