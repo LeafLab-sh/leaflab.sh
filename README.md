@@ -28,26 +28,26 @@ astro.config.mjs # Astro config (adapter, image service, platform proxy)
 
 ## Getting Started
 
-You'll need Node ≥ 22.12.0 and pnpm.
+You'll need bun.
 
 ```bash
-pnpm install
-pnpm dev        # Dev server at localhost:4321
+bun install
+bun run dev     # Dev server at localhost:4321
 ```
 
-`pnpm dev` uses Astro's platform proxy to simulate the Cloudflare runtime locally. Wrangler bindings (KV, D1, etc.) declared in `wrangler.jsonc` are available in the dev server — no deploy required to test them.
+`bun run dev` uses Astro's platform proxy to simulate the Cloudflare runtime locally. Wrangler bindings (KV, D1, etc.) declared in `wrangler.jsonc` are available in the dev server — no deploy required to test them.
 
 ## Commands
 
-| Command           | What it does                                                   |
-| :---------------- | :------------------------------------------------------------- |
-| `pnpm dev`        | Start the dev server at `localhost:4321`                       |
-| `pnpm build`      | Build to `./dist/`                                             |
-| `pnpm preview`    | Build + run locally via Wrangler (closer to production parity) |
-| `pnpm deploy`     | Build + deploy to Cloudflare                                   |
-| `pnpm cf-typegen` | Regenerate `worker-configuration.d.ts` from `wrangler.jsonc`   |
+| Command                | What it does                                                   |
+| :--------------------- | :------------------------------------------------------------- |
+| `bun run dev`          | Start the dev server at `localhost:4321`                       |
+| `bun run build`        | Build to `./dist/`                                             |
+| `bun run preview`      | Build + run locally via Wrangler (closer to production parity) |
+| `bun run deploy`       | Build + deploy to Cloudflare                                   |
+| `bun run cf-typegen`   | Regenerate `worker-configuration.d.ts` from `wrangler.jsonc`   |
 
-Use `pnpm preview` when you want to verify the Worker behavior before deploying — it runs the actual Wrangler dev server against the compiled output, not the Astro dev server.
+Use `bun run preview` when you want to verify the Worker behavior before deploying — it runs the actual Wrangler dev server against the compiled output, not the Astro dev server.
 
 ## Cloudflare Workers
 
@@ -63,7 +63,7 @@ const { env } = Astro.locals.runtime;
 const { env } = context.locals.runtime;
 ```
 
-When you add a new binding, run `pnpm cf-typegen` to regenerate `worker-configuration.d.ts` so the types stay in sync.
+When you add a new binding, run `bun run cf-typegen` to regenerate `worker-configuration.d.ts` so the types stay in sync.
 
 **Compatibility flags** in use:
 - `nodejs_compat` — enables Node.js APIs in the Worker runtime
@@ -83,25 +83,25 @@ Secrets are not stored in the repo. Document what's required in this README when
 
 ## Troubleshooting
 
-**`pnpm dev` doesn't reflect Cloudflare bindings**
+**`bun run dev` doesn't reflect Cloudflare bindings**
 
-Platform proxy is enabled in `astro.config.mjs`, so bindings declared in `wrangler.jsonc` should work in dev. If a binding isn't resolving, make sure it exists in `wrangler.jsonc` and that you've run `pnpm cf-typegen` to update the types.
+Platform proxy is enabled in `astro.config.mjs`, so bindings declared in `wrangler.jsonc` should work in dev. If a binding isn't resolving, make sure it exists in `wrangler.jsonc` and that you've run `bun run cf-typegen` to update the types.
 
 **Types for `Astro.locals.runtime.env` are missing or wrong**
 
-Run `pnpm cf-typegen`. This regenerates `worker-configuration.d.ts` from your current `wrangler.jsonc`. You'll need to do this any time you add or change a binding.
+Run `bun run cf-typegen`. This regenerates `worker-configuration.d.ts` from your current `wrangler.jsonc`. You'll need to do this any time you add or change a binding.
 
-**`pnpm preview` fails with a Wrangler error**
+**`bun run preview` fails with a Wrangler error**
 
-Make sure `pnpm build` succeeded first — `preview` runs `astro build && wrangler dev` and will fail fast if the build output is missing or stale. Check `dist/` exists and looks right before debugging Wrangler.
+Make sure `bun run build` succeeded first — `preview` runs `astro build && wrangler dev` and will fail fast if the build output is missing or stale. Check `dist/` exists and looks right before debugging Wrangler.
 
 **Deployment fails**
 
-Run `pnpm build` locally and confirm the output is clean before deploying. If the build passes but `wrangler deploy` errors, check that your Cloudflare account has the Worker and any required bindings (KV namespaces, D1 databases, etc.) already created — Wrangler won't create them for you on deploy.
+Run `bun run build` locally and confirm the output is clean before deploying. If the build passes but `wrangler deploy` errors, check that your Cloudflare account has the Worker and any required bindings (KV namespaces, D1 databases, etc.) already created — Wrangler won't create them for you on deploy.
 
 **Unexpected behavior in production that doesn't reproduce locally**
 
-Use `pnpm preview` instead of `pnpm dev` to test. The Astro dev server and the Wrangler dev server behave differently in subtle ways. If it works in `dev` but breaks in `preview`, the issue is likely Worker-specific (binding access, compatibility flags, module resolution).
+Use `bun run preview` instead of `bun run dev` to test. The Astro dev server and the Wrangler dev server behave differently in subtle ways. If it works in `dev` but breaks in `preview`, the issue is likely Worker-specific (binding access, compatibility flags, module resolution).
 
 ## Claude Code
 

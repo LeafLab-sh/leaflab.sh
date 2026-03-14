@@ -3,17 +3,17 @@
 	"type": "module",
 	"version": "0.0.1",
 	"engines": {
-		"node": ">=22.12.0"
+		"bun": ">=1.2.0"
 	},
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro check && astro build",
 		"preview": "bun run build && wrangler dev",
 		"astro": "astro",
-		"generate-types": "wrangler types",
 		"deploy": "bun run build && wrangler deploy",
 		"cf-typegen": "wrangler types",
-		"prepare": "husky"
+		"prepare": "husky",
+		"test": "bun test"
 	},
 	"dependencies": {
 		"@astrojs/cloudflare": "^13.1.1",
