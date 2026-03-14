@@ -11,6 +11,7 @@
     "preview": "bun run build && wrangler dev",
     "astro": "astro",
     "deploy": "bun run build && wrangler deploy",
+    "deploy:production": "bun run build && wrangler deploy --env production",
     "cf-typegen": "wrangler types",
     "prepare": "husky",
     "test": "vitest run"

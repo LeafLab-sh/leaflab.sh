@@ -4,7 +4,7 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "leaflab-website",
+  "name": "leaflab-website-dev",
   "compatibility_date": "2026-03-12",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
@@ -14,12 +14,17 @@
   "observability": {
     "enabled": true,
   },
-  "routes": [
-    {
-      "pattern": "leaflab.sh",
-      "custom_domain": true,
+  "env": {
+    "production": {
+      "name": "leaflab-website",
+      "routes": [
+        {
+          "pattern": "leaflab.sh",
+          "custom_domain": true,
+        },
+      ],
     },
-  ],
+  },
   /**
    * Smart Placement
    * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
