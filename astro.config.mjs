@@ -11,7 +11,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL ?? "https://leaflab.sh",
+  site:
+    process.env.SITE_URL ?? "https://leaflab-website-dev.leaflab.workers.dev",
 
   adapter: cloudflare({
     imageService: "compile",
