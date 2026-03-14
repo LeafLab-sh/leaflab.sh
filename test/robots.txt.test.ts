@@ -1,0 +1,23 @@
+import { expect, test } from "vitest";
+import { getRobotsTxt } from "../src/pages/robots.txt";
+
+test("getRobotsTxt includes the sitemap URL", () => {
+  const url = new URL("sitemap-index.xml", "https://leaflab.sh");
+  expect(getRobotsTxt(url)).toContain(
+    "Sitemap: https://leaflab.sh/sitemap-index.xml",
+  );
+});
+
+test("getRobotsTxt includes the Cloudflare comment", () => {
+  const url = new URL("sitemap-index.xml", "https://leaflab.sh");
+  expect(getRobotsTxt(url)).toContain(
+    "# Cloudflare Managed content expected above",
+  );
+});
+
+test("getRobotsTxt uses the provided site URL as the sitemap base", () => {
+  const url = new URL("sitemap-index.xml", "https://staging.leaflab.sh");
+  expect(getRobotsTxt(url)).toContain(
+    "Sitemap: https://staging.leaflab.sh/sitemap-index.xml",
+  );
+});
