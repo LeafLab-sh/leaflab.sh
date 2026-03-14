@@ -9,8 +9,3 @@ linker = "isolated"
 [run]
 # Use Bun's built-in cross-platform shell for scripts (important on Windows)
 shell = "bun"
-
-[test]
-# Configure bun test defaults for when tests are added
-timeout = 10000
-coverage = false

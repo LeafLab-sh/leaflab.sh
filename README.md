@@ -22,8 +22,10 @@ src/
 ├── layouts/            # HTML shell templates
 ├── components/         # Reusable Astro components
 └── env.d.ts            # Extends App.Locals with Cloudflare Runtime bindings
-public/          # Static files copied as-is to dist/client/
-wrangler.jsonc   # Cloudflare Worker config (routes, bindings, compatibility flags)
+public/
+│   └── .well-known/
+│       └── security.txt  # Generated via https://securitytxt.org/
+wrangler.jsonc        # Cloudflare Worker config (routes, bindings, compatibility flags)
 astro.config.mjs # Astro config (adapter, integrations, platform proxy)
 ```
 
