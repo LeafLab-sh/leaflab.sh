@@ -40,13 +40,13 @@ bun run dev     # Dev server at localhost:4321
 
 ## Commands
 
-| Command                | What it does                                                   |
-| :--------------------- | :------------------------------------------------------------- |
-| `bun run dev`          | Start the dev server at `localhost:4321`                       |
-| `bun run build`        | Build to `./dist/`                                             |
-| `bun run preview`      | Build + run locally via Wrangler (closer to production parity) |
-| `bun run deploy`       | Build + deploy to Cloudflare                                   |
-| `bun run cf-typegen`   | Regenerate `worker-configuration.d.ts` from `wrangler.jsonc`   |
+| Command              | What it does                                                   |
+| :------------------- | :------------------------------------------------------------- |
+| `bun run dev`        | Start the dev server at `localhost:4321`                       |
+| `bun run build`      | Build to `./dist/`                                             |
+| `bun run preview`    | Build + run locally via Wrangler (closer to production parity) |
+| `bun run deploy`     | Build + deploy to Cloudflare                                   |
+| `bun run cf-typegen` | Regenerate `worker-configuration.d.ts` from `wrangler.jsonc`   |
 
 Use `bun run preview` when you want to verify the Worker behavior before deploying — it runs the actual Wrangler dev server against the compiled output, not the Astro dev server.
 
@@ -82,6 +82,7 @@ const { env } = context.locals.runtime;
 When you add a new binding, run `bun run cf-typegen` to regenerate `worker-configuration.d.ts` so the types stay in sync.
 
 **Compatibility flags** in use:
+
 - `nodejs_compat` — enables Node.js APIs in the Worker runtime
 - `global_fetch_strictly_public` — prevents `fetch()` from accessing private network addresses
 

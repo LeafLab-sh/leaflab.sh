@@ -1,31 +1,31 @@
 ---
-import '../assets/css/global.css'
+import "../assets/css/global.css";
 import { Font } from "astro:assets";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-        <meta name="description" content="The Homepage for LeafLab.sh">
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        <Font cssVariable="--font-source-code-pro" preload />
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>LeafLab</title>
+    <meta name="description" content="The Homepage for LeafLab.sh" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <Font cssVariable="--font-source-code-pro" preload />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

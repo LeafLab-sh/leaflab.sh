@@ -21,22 +21,24 @@ They're savvy enough to smell BS. They want a real collaborator, not a vendor.
 
 **The vibe:** Whimsy and irony, business casual. Think a millennial who's fluent in Gen Z — culturally aware, not cringe, never trying too hard. Confident without being arrogant. Dry humor that lands without explaining itself.
 
-**The posture:** Quietly confident. LeafLab doesn't brag — it notes the contrast between what it does and what a lot of others do. The word *real* is a signature move: "real full-stack engineers," "real solutions," "real scale." It implies, without attacking.
+**The posture:** Quietly confident. LeafLab doesn't brag — it notes the contrast between what it does and what a lot of others do. The word _real_ is a signature move: "real full-stack engineers," "real solutions," "real scale." It implies, without attacking.
 
 **The feeling:** Like talking to someone who's genuinely sharp, a little irreverent, and completely unimpressed by corporate theater. They get things done. They find the bloat a little funny.
 
 ## Language Patterns
 
 **Use:**
+
 - Direct, declarative sentences
 - Irony that's dry, not snarky
 - Understated confidence ("we don't get blocked" rather than "we're the best")
 - Nature + science metaphors when they fit organically — growth, roots, experiments, cultivate, lab
-- *Real* as a qualifier for emphasis
+- _Real_ as a qualifier for emphasis
 - Contractions and conversational rhythm
 - Business casual vocabulary — professional enough to trust, approachable enough to talk to
 
 **Avoid:**
+
 - Corporate buzzwords: synergy, leverage, best-in-class, scalable solutions ecosystem, deliverables
 - Hype-y startup energy: crush it, 10x, disrupt, game-changer
 - Overly academic or technical jargon without purpose
@@ -74,6 +76,6 @@ When the name comes up in writing, this duality can be invoked lightly. Don't ov
 
 ## Quick Calibration
 
-When in doubt, ask: *Would a sharp, slightly-jaded millennial who's also fluent in Gen Z find this authentic?*
+When in doubt, ask: _Would a sharp, slightly-jaded millennial who's also fluent in Gen Z find this authentic?_
 
 If it sounds like a LinkedIn post or a McKinsey deck, rewrite it. If it sounds like it could come from a real person who's genuinely good at what they do and knows it — you're there.
