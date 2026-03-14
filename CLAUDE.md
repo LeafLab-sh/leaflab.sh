@@ -33,22 +33,22 @@ Build output splits into `dist/client/` (static assets) and `dist/server/` (Work
 
 **Astro integrations** configured in `astro.config.mjs`:
 
-- `@astrojs/sitemap` — generates `/sitemap-index.xml` at build time; `site` is read from `SITE_URL` env var, falling back to `https://leaflab.sh`
+- `@astrojs/sitemap` — generates `/sitemap-index.xml` at build time; `site` is read from `SITE_URL` env var, falling back to `https://leaflab-website-dev.leaflab.workers.dev`; `deploy:production` sets `SITE_URL=https://leaflab.sh` via `cross-env` before building
 - `@astrojs/partytown` — offloads third-party scripts to a web worker; opt scripts in with `type="text/partytown"`
 
 **Platform proxy** is enabled in `astro.config.mjs`, so `bun run dev` simulates the Cloudflare runtime locally without needing to deploy.
 
-Wrangler environments are configured in `wrangler.jsonc`: the default environment targets `leaflab-website-dev` (no custom domain); `--env production` targets `leaflab-website` with the `leaflab.sh` custom domain.
+Wrangler environments are configured in `wrangler.jsonc`: the default environment targets `leaflab-website-dev` (`leaflab-website-dev.leaflab.workers.dev`, no custom domain); `--env production` targets `leaflab-website` with the `leaflab.sh` custom domain.
 
 ## Release & Deployment
 
 Releases are automated via [release-please](https://github.com/googleapis/release-please) (`.github/workflows/release-please.yml`):
 
 1. Every push to `main` triggers release-please, which reads conventional commits since the last release and opens (or updates) a release PR that bumps `package.json`, updates `CHANGELOG.md`, and tags the release.
-2. Every push to `main` also triggers `deploy-dev`, deploying to the `leaflab-website-dev` Cloudflare Worker via the `development` GitHub environment.
+2. Every push to `main` also triggers an automatic deploy to `leaflab-website-dev` (`leaflab-website-dev.leaflab.workers.dev`) via the Cloudflare app integration (not a GitHub Actions job).
 3. When the release PR is merged, `deploy-production` runs and deploys to the `leaflab-website` Cloudflare Worker with the `leaflab.sh` custom domain, via the `production` GitHub environment.
 
-Both environments are restricted to `main` only. Both deploy jobs require two secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+The production deploy job requires two secrets: `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
 
 ## Brand Voice
 
