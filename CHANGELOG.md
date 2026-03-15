@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.5.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.4.0...leaflab-website-v0.5.0) (2026-03-15)
+
+
+### Features
+
+* Logger refactor ([#18](https://github.com/Darunada/leaflab.sh/issues/18)) ([0259d12](https://github.com/Darunada/leaflab.sh/commit/0259d120faad72f6d447df355c1790c726f8f544))
+* Logger refactor ([#21](https://github.com/Darunada/leaflab.sh/issues/21)) ([f3f1f63](https://github.com/Darunada/leaflab.sh/commit/f3f1f6341556a5a3a01a9162ead7ff3e25adda42))
+* logger refactor with Cloudflare Workers compatibility ([#20](https://github.com/Darunada/leaflab.sh/issues/20)) ([78d7530](https://github.com/Darunada/leaflab.sh/commit/78d7530df94a5352be27bbf84fc09a3f5dda664c))
+
+
+### Bug Fixes
+
+* add default configs ([ee563fa](https://github.com/Darunada/leaflab.sh/commit/ee563faff3bb005df1122c41fa8e41803e66b609))
+* Refactor/extract cf jwt logger ([#22](https://github.com/Darunada/leaflab.sh/issues/22)) ([c97be6d](https://github.com/Darunada/leaflab.sh/commit/c97be6d4c23dfa4e5a9f8a9601060dad8851a84c))
+
 ## [0.4.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.3.0...leaflab-website-v0.4.0) (2026-03-15)
 
 
