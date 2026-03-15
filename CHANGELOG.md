@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.3.0...leaflab-website-v0.4.0) (2026-03-15)
+
+
+### Features
+
+* cloudflare access jwt ([#17](https://github.com/Darunada/leaflab.sh/issues/17)) ([d9cf1f8](https://github.com/Darunada/leaflab.sh/commit/d9cf1f8b172472451083bc325a7e629017d72fb3))
+* gate dev Worker behind Cloudflare Access JWT validation ([#15](https://github.com/Darunada/leaflab.sh/issues/15)) ([51df801](https://github.com/Darunada/leaflab.sh/commit/51df801f34064ef43b2947a9d7facf3011936158))
+
 ## [0.3.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.2.0...leaflab-website-v0.3.0) (2026-03-14)
 
 
