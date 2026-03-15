@@ -2,7 +2,7 @@ import { defineMiddleware } from "astro:middleware";
 import pino from "pino";
 import { LogEvent } from "../utils/log_events";
 
-const logger = pino({ level: "info" });
+const logger = pino({ level: "info", browser: { asObject: true } });
 
 export const loggerMiddleware = defineMiddleware(async (context, next) => {
   context.locals.logger = logger;
