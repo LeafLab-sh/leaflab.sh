@@ -36,6 +36,11 @@ export default defineConfig({
         access: "secret",
         optional: true,
       }),
+      LOG_LEVEL: envField.string({
+        context: "server",
+        access: "public",
+        default: "INFO",
+      }),
     },
   },
 

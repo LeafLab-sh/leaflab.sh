@@ -1,15 +1,9 @@
 import { describe, expect, test, vi } from "vitest";
-import { validateCfAccessJwt } from "../src/middlewares/cloudflare-access";
+
+vi.mock("astro:env/server", () => ({ LOG_LEVEL: "DEBUG" }));
+
+import { validateCfAccessJwt } from "../src/utils/cf-access";
 import type { Logger } from "../src/utils/logger";
-
-vi.mock("astro:middleware", () => ({
-  defineMiddleware: vi.fn((fn: unknown) => fn),
-}));
-
-vi.mock("astro:env/server", () => ({
-  CLOUDFLARE_ACCESS_DOMAIN: undefined,
-  CLOUDFLARE_ACCESS_AUD: undefined,
-}));
 
 vi.mock("jose", () => ({
   createRemoteJWKSet: vi.fn(() => "mock-jwks"),

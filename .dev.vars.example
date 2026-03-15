@@ -14,3 +14,11 @@
 
 CLOUDFLARE_ACCESS_DOMAIN=
 CLOUDFLARE_ACCESS_AUD=
+
+# Log level
+# Controls the minimum severity of messages written to the log.
+# Available levels (lowest to highest): DEBUG, INFO, WARN, ERROR, FATAL
+# Case-insensitive — "debug", "Debug", and "DEBUG" are all equivalent.
+# Default: INFO
+
+LOG_LEVEL=INFO

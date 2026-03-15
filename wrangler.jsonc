@@ -62,6 +62,7 @@
   "vars": {
     "CLOUDFLARE_ACCESS_DOMAIN": "",
     "CLOUDFLARE_ACCESS_AUD": "",
+    "LOG_LEVEL": "INFO",
   },
   /**
    * Service Bindings (communicate between multiple Workers)

@@ -1,6 +1,6 @@
 import { defineMiddleware } from "astro:middleware";
 import { logger } from "../utils/logger";
-import { LogEvent } from "../utils/log_events";
+import { LogEvent } from "../utils/logger";
 
 export const loggerMiddleware = defineMiddleware(async (context, next) => {
   context.locals.logger = logger;
