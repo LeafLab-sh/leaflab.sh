@@ -2,6 +2,15 @@ import { describe, expect, test, vi } from "vitest";
 import { validateCfAccessJwt } from "../src/middlewares/cloudflare-access";
 import type { Logger } from "pino";
 
+vi.mock("astro:middleware", () => ({
+  defineMiddleware: vi.fn((fn: unknown) => fn),
+}));
+
+vi.mock("astro:env/server", () => ({
+  CLOUDFLARE_ACCESS_DOMAIN: undefined,
+  CLOUDFLARE_ACCESS_AUD: undefined,
+}));
+
 vi.mock("jose", () => ({
   createRemoteJWKSet: vi.fn(() => "mock-jwks"),
   jwtVerify: vi.fn(),

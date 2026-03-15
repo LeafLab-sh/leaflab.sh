@@ -35,7 +35,7 @@ export async function validateCfAccessJwt(
       event: LogEvent.CF_ACCESS_JWT_NOT_PROVIDED,
       method: request.method,
       message:
-        "Cloudflare Access validation is configured, but no token was specified with this request.",
+        "Cloudflare Access validation is configured but no token was specified with this request.",
       path: url.pathname,
     });
     return new Response("Unauthorized", { status: 403 });
