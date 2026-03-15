@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.5.0...leaflab-website-v0.6.0) (2026-03-15)
+
+
+### Features
+
+* favicon ([41c436a](https://github.com/Darunada/leaflab.sh/commit/41c436a49aaeb62433757e7a46e0f29ba8915de1))
+
+
+### Bug Fixes
+
+* secret config during deployment ([cad47b2](https://github.com/Darunada/leaflab.sh/commit/cad47b21cc57950afb2e05bdbcce619a9e8704b5))
+
 ## [0.5.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.4.0...leaflab-website-v0.5.0) (2026-03-15)
 
 
