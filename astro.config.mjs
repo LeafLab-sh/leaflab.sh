@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, fontProviders, envField } from "astro/config";
 
 import cloudflare from "@astrojs/cloudflare";
 
@@ -22,6 +22,21 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  env: {
+    schema: {
+      CLOUDFLARE_ACCESS_DOMAIN: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      CLOUDFLARE_ACCESS_AUD: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+    },
   },
 
   fonts: [

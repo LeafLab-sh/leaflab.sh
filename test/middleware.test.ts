@@ -1,5 +1,15 @@
 import { describe, expect, test, vi } from "vitest";
 import { validateCfAccessJwt } from "../src/middlewares/cloudflare-access";
+import type { Logger } from "pino";
+
+vi.mock("astro:middleware", () => ({
+  defineMiddleware: vi.fn((fn: unknown) => fn),
+}));
+
+vi.mock("astro:env/server", () => ({
+  CLOUDFLARE_ACCESS_DOMAIN: undefined,
+  CLOUDFLARE_ACCESS_AUD: undefined,
+}));
 
 vi.mock("jose", () => ({
   createRemoteJWKSet: vi.fn(() => "mock-jwks"),
@@ -16,14 +26,19 @@ const env = {
   CLOUDFLARE_ACCESS_AUD: "abc123",
 };
 
+const logger = {
+  info: vi.fn(),
+  error: vi.fn(),
+} as unknown as Logger;
+
 describe("validateCfAccessJwt", () => {
   test("returns null when vars are not configured", async () => {
-    const result = await validateCfAccessJwt(makeRequest(), {});
+    const result = await validateCfAccessJwt(makeRequest(), {}, logger);
     expect(result).toBeNull();
   });
 
   test("returns 403 when token header is missing", async () => {
-    const result = await validateCfAccessJwt(makeRequest(), env);
+    const result = await validateCfAccessJwt(makeRequest(), env, logger);
     expect(result?.status).toBe(403);
   });
 
@@ -33,6 +48,7 @@ describe("validateCfAccessJwt", () => {
     const result = await validateCfAccessJwt(
       makeRequest("bad.token.here"),
       env,
+      logger,
     );
     expect(result?.status).toBe(403);
   });
@@ -46,6 +62,7 @@ describe("validateCfAccessJwt", () => {
     const result = await validateCfAccessJwt(
       makeRequest("valid.token.here"),
       env,
+      logger,
     );
     expect(result).toBeNull();
   });
