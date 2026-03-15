@@ -1,0 +1,16 @@
+# Cloudflare Access JWT validation
+# Set these to enforce Cloudflare Access on the dev Worker.
+# Leave blank (or unset) to disable validation — useful for local development.
+#
+# To test validation locally:
+#   1. Set both values below to your real Access credentials
+#   2. Copy this file to .dev.vars (gitignored): cp .dev.vars.example .dev.vars — Wrangler reads it for local dev
+#   3. Obtain a JWT by visiting your Access-protected URL and copying the
+#      Cf-Access-Jwt-Assertion header from a browser request
+#   4. Pass the token in requests: curl -H "Cf-Access-Jwt-Assertion: <token>" http://localhost:4321
+#
+# CLOUDFLARE_ACCESS_DOMAIN — your team URL, e.g. https://myteam.cloudflareaccess.com
+# CLOUDFLARE_ACCESS_AUD   — the Application Audience tag from the Zero Trust dashboard
+
+CLOUDFLARE_ACCESS_DOMAIN=
+CLOUDFLARE_ACCESS_AUD=
