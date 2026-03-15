@@ -1,63 +1,69 @@
+import { defineMiddleware } from "astro:middleware";
 import { createRemoteJWKSet, jwtVerify } from "jose";
+import type { Logger } from "../utils/logger";
+import {
+  CLOUDFLARE_ACCESS_DOMAIN,
+  CLOUDFLARE_ACCESS_AUD,
+} from "astro:env/server";
+import { LogEvent } from "../utils/log_events";
+
+interface CfAccessEnv {
+  CLOUDFLARE_ACCESS_DOMAIN?: string;
+  CLOUDFLARE_ACCESS_AUD?: string;
+}
 
 export async function validateCfAccessJwt(
   request: Request,
-  env: { CLOUDFLARE_ACCESS_DOMAIN?: string; CLOUDFLARE_ACCESS_AUD?: string },
+  env: CfAccessEnv,
+  logger: Logger,
 ): Promise<Response | null> {
-  const url = new URL(request.url);
-
-  const { CLOUDFLARE_ACCESS_DOMAIN, CLOUDFLARE_ACCESS_AUD } = env;
-
-  if (!CLOUDFLARE_ACCESS_DOMAIN || !CLOUDFLARE_ACCESS_AUD) {
-    console.info(
-      JSON.stringify({
-        event: "cf_access_not_configured",
-        error: "Cloudflare Access validation is not configured.",
-        path: url.pathname,
-      }),
-    );
+  if (!env.CLOUDFLARE_ACCESS_DOMAIN || !env.CLOUDFLARE_ACCESS_AUD) {
+    logger.info({
+      event: LogEvent.CF_ACCESS_NOT_CONFIGURED,
+      message: "Cloudflare Access validation is not configured.",
+    });
     return null; // not configured, skip
   }
 
   const token = request.headers.get("Cf-Access-Jwt-Assertion");
   if (!token) {
-    console.error(
-      JSON.stringify({
-        event: "cf_access_jwt_not_provided",
-        error:
-          "Cloudflare Access validation is configured, but no token was " +
-          "specified with this request.",
-        path: url.pathname,
-      }),
-    );
+    logger.error({
+      event: LogEvent.CF_ACCESS_JWT_NOT_PROVIDED,
+      message:
+        "Cloudflare Access validation is configured but no token was specified with this request.",
+    });
     return new Response("Unauthorized", { status: 403 });
   }
 
   try {
     const JWKS = createRemoteJWKSet(
-      new URL(`${CLOUDFLARE_ACCESS_DOMAIN}/cdn-cgi/access/certs`),
+      new URL(`${env.CLOUDFLARE_ACCESS_DOMAIN}/cdn-cgi/access/certs`),
     );
     await jwtVerify(token, JWKS, {
-      issuer: CLOUDFLARE_ACCESS_DOMAIN,
-      audience: CLOUDFLARE_ACCESS_AUD,
+      issuer: env.CLOUDFLARE_ACCESS_DOMAIN,
+      audience: env.CLOUDFLARE_ACCESS_AUD,
     });
 
-    console.info(
-      JSON.stringify({
-        event: "cf_access_validation_success",
-        error: "Cloudflare Access validation succeeded.",
-        path: url.pathname,
-      }),
-    );
+    logger.info({
+      event: LogEvent.CF_ACCESS_VALIDATION_SUCCESS,
+      message: "Cloudflare Access validation succeeded.",
+    });
     return null; // valid, proceed
   } catch (err) {
-    console.error(
-      JSON.stringify({
-        event: "cf_access_jwt_invalid",
-        error: err instanceof Error ? err.message : String(err),
-        path: url.pathname,
-      }),
-    );
+    logger.error({
+      event: LogEvent.CF_ACCESS_JWT_INVALID,
+      message: "Cloudflare Access validation failed.",
+      error: err instanceof Error ? err.message : String(err),
+    });
     return new Response("Unauthorized", { status: 403 });
   }
 }
+
+export const cfAccessMiddleware = defineMiddleware(async (context, next) => {
+  const errorResponse = await validateCfAccessJwt(
+    context.request,
+    { CLOUDFLARE_ACCESS_DOMAIN, CLOUDFLARE_ACCESS_AUD },
+    context.locals.logger,
+  );
+  return errorResponse ?? next();
+});
