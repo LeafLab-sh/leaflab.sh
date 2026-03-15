@@ -39,7 +39,6 @@ export default defineConfig({
       LOG_LEVEL: envField.string({
         context: "server",
         access: "public",
-        optional: true,
         default: "INFO",
       }),
     },
