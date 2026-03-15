@@ -1,6 +1,6 @@
 import { defineMiddleware } from "astro:middleware";
 import { createRemoteJWKSet, jwtVerify } from "jose";
-import type { Logger } from "pino";
+import type { Logger } from "../utils/logger";
 import {
   CLOUDFLARE_ACCESS_DOMAIN,
   CLOUDFLARE_ACCESS_AUD,
@@ -17,14 +17,10 @@ export async function validateCfAccessJwt(
   env: CfAccessEnv,
   logger: Logger,
 ): Promise<Response | null> {
-  const url = new URL(request.url);
-
   if (!env.CLOUDFLARE_ACCESS_DOMAIN || !env.CLOUDFLARE_ACCESS_AUD) {
     logger.info({
       event: LogEvent.CF_ACCESS_NOT_CONFIGURED,
-      method: request.method,
       message: "Cloudflare Access validation is not configured.",
-      path: url.pathname,
     });
     return null; // not configured, skip
   }
@@ -33,10 +29,8 @@ export async function validateCfAccessJwt(
   if (!token) {
     logger.error({
       event: LogEvent.CF_ACCESS_JWT_NOT_PROVIDED,
-      method: request.method,
       message:
         "Cloudflare Access validation is configured but no token was specified with this request.",
-      path: url.pathname,
     });
     return new Response("Unauthorized", { status: 403 });
   }
@@ -52,18 +46,14 @@ export async function validateCfAccessJwt(
 
     logger.info({
       event: LogEvent.CF_ACCESS_VALIDATION_SUCCESS,
-      method: request.method,
       message: "Cloudflare Access validation succeeded.",
-      path: url.pathname,
     });
     return null; // valid, proceed
   } catch (err) {
     logger.error({
       event: LogEvent.CF_ACCESS_JWT_INVALID,
-      method: request.method,
       message: "Cloudflare Access validation failed.",
       error: err instanceof Error ? err.message : String(err),
-      path: url.pathname,
     });
     return new Response("Unauthorized", { status: 403 });
   }

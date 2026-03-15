@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 import { validateCfAccessJwt } from "../src/middlewares/cloudflare-access";
-import type { Logger } from "pino";
+import type { Logger } from "../src/utils/logger";
 
 vi.mock("astro:middleware", () => ({
   defineMiddleware: vi.fn((fn: unknown) => fn),
