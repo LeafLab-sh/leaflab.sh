@@ -31,6 +31,11 @@
           "custom_domain": true,
         },
       ],
+      "vars": {
+        "CLOUDFLARE_ACCESS_DOMAIN": "",
+        "CLOUDFLARE_ACCESS_AUD": "",
+        "LOG_LEVEL": "DEBUG",
+      },
       "observability": {
         "logs": {
           "enabled": true,
@@ -60,8 +65,8 @@
    * https://developers.cloudflare.com/workers/configuration/secrets/
    */
   "vars": {
-    "CLOUDFLARE_ACCESS_DOMAIN": "",
-    "CLOUDFLARE_ACCESS_AUD": "",
+    "CLOUDFLARE_ACCESS_DOMAIN": "https://leaflab.cloudflareaccess.com",
+    "CLOUDFLARE_ACCESS_AUD": "829dd3cce872141c8786e5c1ef7774d77fdb52eeb6fa31ddb5f97c9745c67860",
     "LOG_LEVEL": "INFO",
   },
   /**
