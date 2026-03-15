@@ -15,6 +15,7 @@ export async function validateCfAccessJwt(
     return new Response("Unauthorized", { status: 403 });
   }
 
+  const url = new URL(request.url);
   try {
     const JWKS = createRemoteJWKSet(
       new URL(`${CLOUDFLARE_ACCESS_DOMAIN}/cdn-cgi/access/certs`),
@@ -24,7 +25,14 @@ export async function validateCfAccessJwt(
       audience: CLOUDFLARE_ACCESS_AUD,
     });
     return null; // valid, proceed
-  } catch {
+  } catch (err) {
+    console.error(
+      JSON.stringify({
+        event: "cf_access_jwt_invalid",
+        error: err instanceof Error ? err.message : String(err),
+        path: url.pathname,
+      }),
+    );
     return new Response("Unauthorized", { status: 403 });
   }
 }
