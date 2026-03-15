@@ -1,4 +1,7 @@
 import { describe, expect, test, vi } from "vitest";
+
+vi.mock("astro:env/server", () => ({ LOG_LEVEL: "DEBUG" }));
+
 import { validateCfAccessJwt } from "../src/utils/cf-access";
 import type { Logger } from "../src/utils/logger";
 
