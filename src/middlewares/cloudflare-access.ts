@@ -21,7 +21,6 @@ export async function validateCfAccessJwt(
     logger.info({
       event: LogEvent.CF_ACCESS_NOT_CONFIGURED,
       message: "Cloudflare Access validation is not configured.",
-
     });
     return null; // not configured, skip
   }
