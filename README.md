@@ -23,7 +23,9 @@ src/
 │   └── robots.txt.ts   # Dynamic robots.txt endpoint (links to sitemap)
 ├── layouts/            # HTML shell templates
 ├── components/         # Reusable Astro components
-└── env.d.ts            # Extends App.Locals with Cloudflare Runtime bindings
+├── middlewares/        # cloudflare-access.ts (JWT auth), logger.ts (structured logging)
+├── utils/              # Custom structured JSON logger
+└── env.d.ts            # Extends App.Locals (logger) and declares ImportMetaEnv vars
 public/
 │   └── .well-known/
 │       └── security.txt  # Generated via https://securitytxt.org/
@@ -126,10 +128,4 @@ Use `bun run preview` instead of `bun run dev` to test. The Astro dev server and
 
 ## Claude Code
 
-If you're using Claude Code, a LeafLab brand voice skill is bundled at `.claude/skills/leaflab-branding.skill`. Install it once to get voice and tone loaded automatically when writing content for the site:
-
-```bash
-claude skill install .claude/skills/leaflab-branding.skill
-```
-
-A `/leaflab-branding` slash command is also available without installation.
+If you're using Claude Code, install the `leaflab-branding` skill from the leaflab-claude-plugins marketplace and run it before writing any site content.

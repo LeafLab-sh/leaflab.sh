@@ -13,7 +13,7 @@ bun run deploy:production # Build + deploy to Cloudflare (production)
 bun run cf-typegen   # Regenerate Cloudflare Worker type definitions
 ```
 
-No lint or test commands are configured.
+`bun run test` — runs Vitest. `astro check` runs as part of `bun run build`.
 
 **Conventional commits are required.** Commitlint enforces the [Conventional Commits](https://www.conventionalcommits.org/) spec via a Husky commit-msg hook. Every commit message must follow the `type: description` format (e.g. `feat:`, `fix:`, `chore:`). This is what release-please uses to determine version bumps and generate the changelog.
 
@@ -25,7 +25,9 @@ No lint or test commands are configured.
   - `src/pages/robots.txt.ts` — Dynamic API endpoint that serves `robots.txt` pointing crawlers to the sitemap
 - `src/layouts/` — Reusable HTML shell templates
 - `src/components/` — Astro components
-- `src/env.d.ts` — Extends `App.Locals` with the Cloudflare `Runtime<Env>` interface for accessing Worker bindings (KV, D1, etc.) in page/API routes
+- `src/env.d.ts` — Extends `App.Locals` (logger) and declares `ImportMetaEnv` vars; Cloudflare bindings are accessed via `import { env } from "cloudflare:workers"` in middleware
+- `src/middlewares/` — `cloudflare-access.ts` (Cf-Access JWT validation), `logger.ts` (attaches logger to locals)
+- `src/utils/` — Custom structured JSON logger (`logger.ts`)
 
 Build output splits into `dist/client/` (static assets) and `dist/server/` (Worker chunks). Wrangler serves the `dist/` directory via the `ASSETS` binding and routes dynamic requests to the Worker.
 
@@ -68,4 +70,4 @@ Retrieve API references and limits from:
 
 ## Brand Voice
 
-A `/leaflab-branding` slash command is available in `.claude/commands/`. Run it before writing any site content to load LeafLab's voice and tone guidelines.
+Run the `leaflab-branding` skill (from the leaflab-claude-plugins marketplace) before writing any site content to load LeafLab's voice and tone guidelines.
