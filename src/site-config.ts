@@ -37,7 +37,9 @@ export const site: SiteConfig = {
     "LeafLab.sh — software development and consulting for small businesses.",
   description:
     "Astro Baseline is a minimal HTML-first starter with senior defaults: SEO, JSON-LD, a11y basics, and clean structure.",
-  url: import.meta.env.SITE_URL ?? "https://leaflab.sh",
+  url:
+    import.meta.env.SITE_URL ??
+    "https://leaflab-website-dev.leaflab.workers.dev",
   locale: "en",
   author: {
     name: "Lea Fairbanks",
