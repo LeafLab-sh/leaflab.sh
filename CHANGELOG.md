@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.7.0...leaflab-website-v0.8.0) (2026-03-16)
+
+
+### Features
+
+* Replace template placeholder copy with LeafLab brand voice ([#27](https://github.com/Darunada/leaflab.sh/issues/27)) ([93061ac](https://github.com/Darunada/leaflab.sh/commit/93061ac0b42e0f31a313a4c86567a36789166b78))
+
+
+### Bug Fixes
+
+* No trailing slash ([#29](https://github.com/Darunada/leaflab.sh/issues/29)) ([f7812cf](https://github.com/Darunada/leaflab.sh/commit/f7812cfc02ba5de98cb433781c66f04c8e06eee9))
+
 ## [0.7.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.6.0...leaflab-website-v0.7.0) (2026-03-16)
 
 
