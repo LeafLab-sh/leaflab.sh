@@ -13,7 +13,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site:
     process.env.SITE_URL ?? "https://leaflab-website-dev.leaflab.workers.dev",
-
+  trailingSlash: "never",
   adapter: cloudflare({
     imageService: "compile",
   }),
