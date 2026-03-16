@@ -34,9 +34,9 @@ export type SiteConfig = {
 export const site: SiteConfig = {
   name: "LeafLab",
   tagline:
-    "LeafLab.sh — software development and consulting for small businesses.",
+    "LeafLab — real full-stack development for businesses that are actually going somewhere.",
   description:
-    "Astro Baseline is a minimal HTML-first starter with senior defaults: SEO, JSON-LD, a11y basics, and clean structure.",
+    "LeafLab is a network of software developers and consultants. Full-stack, scalable, and built by people who don't get blocked.",
   url:
     import.meta.env.SITE_URL ??
     "https://leaflab-website-dev.leaflab.workers.dev",
@@ -59,7 +59,7 @@ export const site: SiteConfig = {
   seo: {
     ogImage: "/images/og/og-default.jpg",
     ogImageAlt:
-      "LeafLab offers development and consulting services to small businesses.",
+      "LeafLab — real full-stack development for businesses that are actually going somewhere.",
     robots: "index,follow",
     themeColor: "#fbfbf9",
   },
