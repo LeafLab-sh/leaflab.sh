@@ -1,11 +1,41 @@
 ---
-import Home from "../components/Home.astro";
-import HomeLayout from "../layouts/HomeLayout.astro";
+import Base from "../layouts/BaseLayout.astro";
+import { site } from "../site-config.ts";
 
-// HomeLayout to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
+  inLanguage: site.locale,
+};
 ---
 
-<HomeLayout>
-  <Home />
-</HomeLayout>
+<Base
+  title={site.name}
+  description={site.description}
+  canonicalPath="/"
+  jsonLd={jsonLd}
+>
+  <article class="prose">
+    <h1>{site.tagline}</h1>
+    <p class="lead">{site.description}</p>
+
+    <section class="block">
+      <h2>What this is</h2>
+      <p>
+        Astro Baseline is a boring starter: clear structure, SEO defaults, and
+        minimal CSS. No UI kit. No framework runtime.
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>Next steps</h2>
+      <ul>
+        <li>Customize <code>src/content/site.ts</code></li>
+        <li>Adjust tokens in <code>src/styles/partials/tokens.css</code></li>
+        <li>Add your pages and components</li>
+      </ul>
+    </section>
+  </article>
+</Base>
