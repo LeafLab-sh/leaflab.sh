@@ -13,9 +13,15 @@ const title = `Contact — ${site.name}`;
   <article class="prose">
     <h1>Contact</h1>
 
-    <p class="lead">This site does not include a contact form by default.</p>
+    <p class="lead">Have a project in mind? We'd love to hear about it.</p>
 
-    <p>If you need to get in touch, you can reach us by email:</p>
+    <p>
+      Drop a line with a bit of context — what you're building, where you're
+      stuck, or just that you want to explore working together. No intake forms,
+      no discovery call scheduling portal. Just email.
+    </p>
+
+    <p>Reach us at:</p>
 
     {
       site.author.email && (
@@ -24,7 +30,5 @@ const title = `Contact — ${site.name}`;
         </p>
       )
     }
-
-    <p>This keeps the baseline simple and avoids unnecessary JavaScript.</p>
   </article>
 </Base>
