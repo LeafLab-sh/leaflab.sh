@@ -1,5 +1,5 @@
-@import "tailwindcss";
-
-@theme inline {
-  --font-mono: var(--font-source-code-pro);
-}
+@import "./partials/tokens.css";
+@import "./partials/reset.css";
+@import "./partials/fonts.css";
+@import "./partials/structure.css";
+@import "./partials/behaviors.css";

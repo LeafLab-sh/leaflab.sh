@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import { site } from "../site-config.ts";
+
+const title = `Contact — ${site.name}`;
+---
+
+<Base
+  title={title}
+  description={`Contact ${site.name}`}
+  canonicalPath="/contact"
+>
+  <article class="prose">
+    <h1>Contact</h1>
+
+    <p class="lead">This site does not include a contact form by default.</p>
+
+    <p>If you need to get in touch, you can reach us by email:</p>
+
+    {
+      site.author.email && (
+        <p>
+          <a href={`mailto:${site.author.email}`}>{site.author.email}</a>
+        </p>
+      )
+    }
+
+    <p>This keeps the baseline simple and avoids unnecessary JavaScript.</p>
+  </article>
+</Base>

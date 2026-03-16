@@ -1,4 +1,6 @@
-# leaflab-website
+# leaflab.sh website
+
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
 
 The source for [leaflab.sh](https://leaflab.sh) — Lea Fairbanks's software development and consulting practice. Built with Astro, deployed to Cloudflare Workers at the edge.
 

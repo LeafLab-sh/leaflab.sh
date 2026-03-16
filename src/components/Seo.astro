@@ -1,0 +1,84 @@
+---
+import { type JsonLd, site } from "../site-config.ts";
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogDesc = description,
+  ogImageAlt = "",
+  robots = site.seo.robots ?? "index,follow",
+  jsonLd,
+  ogType,
+  themeColor = site.seo.themeColor ?? "#fbfbf9",
+} = Astro.props as {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  ogDesc?: string;
+  ogImageAlt?: string;
+  robots?: string;
+  jsonLd?: JsonLd | JsonLd[];
+  ogType?: "website" | "article";
+  themeColor?: string;
+};
+
+const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const hasOgImage = Boolean(ogImage);
+
+const computedOgType: "website" | "article" =
+  ogType ?? (canonical.includes("/blog/") ? "article" : "website");
+const ogDescription = ogDesc.length == 0 ? description : ogDesc;
+---
+
+<title>{title}</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={robots} />
+
+<meta name="theme-color" content={themeColor} />
+
+<meta property="og:type" content={computedOgType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+{hasOgImage && <meta property="og:image" content={ogImage} />}
+{
+  hasOgImage && ogImageAlt && (
+    <meta property="og:image:alt" content={ogImageAlt} />
+  )
+}
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content={site.locale} />
+
+<meta
+  name="twitter:card"
+  content={hasOgImage ? "summary_large_image" : "summary"}
+/>
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={ogDescription} />
+{hasOgImage && <meta name="twitter:image" content={ogImage} />}
+
+<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="{site.name}" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="generator" content={Astro.generator} />
+
+{
+  jsonLdArray.map((obj) => (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(obj)}
+    />
+  ))
+}
