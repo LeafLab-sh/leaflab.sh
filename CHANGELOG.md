@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.6.0...leaflab-website-v0.7.0) (2026-03-16)
+
+
+### Features
+
+* new site layout based on astro-baseline template ([#24](https://github.com/Darunada/leaflab.sh/issues/24)) ([12fcdf6](https://github.com/Darunada/leaflab.sh/commit/12fcdf65f4e5729bfad5834ec8f31e5d2ab14580))
+
+
+### Bug Fixes
+
+* adjust base url ([#26](https://github.com/Darunada/leaflab.sh/issues/26)) ([ec60a3a](https://github.com/Darunada/leaflab.sh/commit/ec60a3ac4e2c3bdca884c5eaa9752d14dd547ee9))
+
 ## [0.6.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.5.0...leaflab-website-v0.6.0) (2026-03-15)
 
 
