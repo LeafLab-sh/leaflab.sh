@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/BaseLayout.astro";
 import { site } from "../site-config.ts";
+import TeamCard from "../components/TeamCard.astro";
+import { team } from "../data/team";
 
 const title = `About — ${site.name}`;
 ---
@@ -29,4 +31,11 @@ const title = `About — ${site.name}`;
       ship things.
     </p>
   </article>
+
+  <section class="prose">
+    <h2>Team</h2>
+    <div class="team-grid">
+      {team.map((member) => <TeamCard {...member} />)}
+    </div>
+  </section>
 </Base>
