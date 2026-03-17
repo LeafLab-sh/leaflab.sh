@@ -1,0 +1,73 @@
+---
+import type { TeamMember } from "../data/team";
+
+type Props = TeamMember;
+
+const { name, location, photo, bioLink } = Astro.props;
+---
+
+<figure class="team-card">
+  <img class="team-card__photo" src={photo} alt={name} width="80" height="80" />
+  <figcaption class="team-card__info">
+    <p class="team-card__name">{name}</p>
+    <p class="team-card__location">{location}</p>
+    <a
+      class="team-card__link"
+      href={bioLink.href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {bioLink.label}
+    </a>
+  </figcaption>
+</figure>
+
+<style>
+  .team-card {
+    margin: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-2);
+  }
+
+  .team-card__photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .team-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .team-card__name {
+    margin: 0;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .team-card__location {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .team-card__link {
+    font-size: 13px;
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  .team-card__link:hover {
+    text-decoration: underline;
+  }
+</style>
