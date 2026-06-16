@@ -14,5 +14,5 @@ export const team: TeamMember[] = [
     location: "Midvale, UT",
     photo: "/images/team/9mm.png",
     bioLink: { href: "https://leaflab.sh", label: "My Site" },
-  }
+  },
 ];
