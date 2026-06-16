@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.9.0...leaflab-website-v0.10.0) (2026-06-16)
+
+
+### Features
+
+* test deployment with updated packages, troubleshoot failed deploy ([#32](https://github.com/LeafLab-sh/leaflab.sh/issues/32)) ([8d7c60f](https://github.com/LeafLab-sh/leaflab.sh/commit/8d7c60f8bcbd527812f28bf4723dd3e37802cedc))
+
 ## [0.9.0](https://github.com/Darunada/leaflab.sh/compare/leaflab-website-v0.8.0...leaflab-website-v0.9.0) (2026-03-17)
 
 
