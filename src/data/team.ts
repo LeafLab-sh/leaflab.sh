@@ -14,17 +14,5 @@ export const team: TeamMember[] = [
     location: "Midvale, UT",
     photo: "/images/team/9mm.png",
     bioLink: { href: "https://leaflab.sh", label: "My Site" },
-  },
-  {
-    name: "Rex Swinsick",
-    location: "Mentor, OH",
-    photo: "/images/team/penguin.png",
-    bioLink: { href: "https://leaflab.sh", label: "My Site" },
-  },
-  {
-    name: "iv Swinsick",
-    location: "Salt Lake City, UT",
-    photo: "/images/team/entity.png",
-    bioLink: { href: "https://leaflab.sh", label: "[redacted]" },
-  },
+  }
 ];
