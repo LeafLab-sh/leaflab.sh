@@ -125,7 +125,3 @@ Run `bun run build` locally and confirm the output is clean before deploying. If
 **Unexpected behavior in production that doesn't reproduce locally**
 
 Use `bun run preview` instead of `bun run dev` to test. The Astro dev server and the Wrangler dev server behave differently in subtle ways. If it works in `dev` but breaks in `preview`, the issue is likely Worker-specific (binding access, compatibility flags, module resolution).
-
-## Claude Code
-
-If you're using Claude Code, install the `leaflab-branding` skill from the leaflab-claude-plugins marketplace and run it before writing any site content.
