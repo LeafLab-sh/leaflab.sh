@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.10.0...leaflab-website-v0.11.0) (2026-07-07)
+
+
+### Features
+
+* add blog, projects page, and content collections ([#36](https://github.com/LeafLab-sh/leaflab.sh/issues/36)) ([37d9abd](https://github.com/LeafLab-sh/leaflab.sh/commit/37d9abd437482622e102cd91d265cfb4105c0dc1))
+
 ## [0.10.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.9.0...leaflab-website-v0.10.0) (2026-06-16)
 
 
