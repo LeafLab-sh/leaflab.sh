@@ -12,7 +12,7 @@ export const team: TeamMember[] = [
   {
     name: "Lea Fairbanks",
     location: "Midvale, UT",
-    photo: "/images/team/9mm.png",
+    photo: "/images/team/leafbot.jpg",
     bioLink: { href: "https://leaflab.sh", label: "My Site" },
   },
 ];
