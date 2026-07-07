@@ -1,0 +1,79 @@
+---
+import Base from "./BaseLayout.astro";
+import { site } from "../site-config.ts";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  updated?: Date;
+  tags: string[];
+  canonicalPath: string;
+}
+
+const { title, description, date, updated, tags, canonicalPath } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: date.toISOString(),
+  ...(updated && { dateModified: updated.toISOString() }),
+  author: { "@type": "Person", name: site.author.name },
+};
+
+const dateFormat: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+---
+
+<Base
+  title={`${title} — ${site.name}`}
+  description={description}
+  canonicalPath={canonicalPath}
+  jsonLd={jsonLd}
+>
+  <article class="prose">
+    <h1>{title}</h1>
+    <p class="post-meta">
+      <time datetime={date.toISOString()}>
+        {date.toLocaleDateString(site.locale, dateFormat)}
+      </time>
+      {
+        tags.length > 0 && (
+          <span class="post-meta__tags">
+            {tags.map((tag) => (
+              <span class="post-meta__tag">{tag}</span>
+            ))}
+          </span>
+        )
+      }
+    </p>
+    <slot />
+  </article>
+</Base>
+
+<style>
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 var(--space-4);
+  }
+
+  .post-meta__tags {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .post-meta__tag {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+  }
+</style>

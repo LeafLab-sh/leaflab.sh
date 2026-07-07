@@ -52,9 +52,10 @@ export const site: SiteConfig = {
   },
   nav: [
     { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Blog", href: "/blog" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
-    { label: "Blog", href: "/blog" },
   ],
   seo: {
     ogImage: "/images/og/og-default.jpg",

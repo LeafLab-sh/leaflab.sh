@@ -1,0 +1,98 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/BaseLayout.astro";
+import { site } from "../../site-config.ts";
+
+const title = `Blog — ${site.name}`;
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const dateFormat: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+---
+
+<Base
+  title={title}
+  description="Writing on software, robotics, and things I've built."
+  canonicalPath="/blog"
+>
+  <article class="prose">
+    <h1>Blog</h1>
+    <p class="lead">Notes on what I'm building and what I've learned.</p>
+  </article>
+
+  {
+    posts.length === 0 ? (
+      <p class="prose empty-state">Nothing published yet — check back soon.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li class="post-list__item">
+            <a class="post-list__link" href={`/blog/${post.id}`}>
+              {post.data.title}
+            </a>
+            <time
+              class="post-list__date"
+              datetime={post.data.date.toISOString()}
+            >
+              {post.data.date.toLocaleDateString(site.locale, dateFormat)}
+            </time>
+            <p class="post-list__desc">{post.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>
+
+<style>
+  .empty-state {
+    color: var(--muted);
+  }
+
+  .post-list {
+    list-style: none;
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .post-list__item {
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .post-list__link {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--fg);
+    text-decoration: none;
+  }
+
+  .post-list__link:hover {
+    color: var(--link);
+  }
+
+  .post-list__date {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin: var(--space-1) 0;
+  }
+
+  .post-list__desc {
+    margin: 0;
+    color: var(--muted);
+  }
+</style>
