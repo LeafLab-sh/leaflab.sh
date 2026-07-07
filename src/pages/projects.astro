@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import { site } from "../site-config.ts";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
+
+const title = `Projects — ${site.name}`;
+---
+
+<Base
+  title={title}
+  description="Things I've built and shipped — mods, robotics tools, and 3D-printed hardware."
+  canonicalPath="/projects"
+>
+  <article class="prose">
+    <h1>Projects</h1>
+    <p class="lead">
+      A mix of software and hardware — things I build for fun, for my robotics
+      teams, and because I couldn't find the right part on a shelf.
+    </p>
+  </article>
+
+  <section class="project-grid">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </section>
+</Base>

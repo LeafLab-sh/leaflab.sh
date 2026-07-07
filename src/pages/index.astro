@@ -1,6 +1,10 @@
 ---
 import Base from "../layouts/BaseLayout.astro";
 import { site } from "../site-config.ts";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/projects";
+
+const featured = projects.filter((project) => project.featured);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -18,27 +22,55 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <article class="prose">
-    <h1>{site.tagline}</h1>
-    <p class="lead">{site.description}</p>
-
-    <section class="block">
-      <h2>What we do</h2>
-      <p>
-        Full-stack web development and technical consulting for small businesses
-        and founders. That means the whole thing — architecture, implementation,
-        infrastructure, and the occasional "wait, why is this broken in
-        production" at 11pm. Real ownership, not hand-offs.
-      </p>
-    </section>
-
-    <section class="block">
-      <h2>Who it's for</h2>
-      <p>
-        You're building something on the web and you need a technical partner
-        who can actually execute. You don't want a big agency, a vague estimate,
-        or someone who escalates when things get weird. You want people who
-        solve the problem and ship the thing.
-      </p>
-    </section>
+    <h1>Hi, I'm Lea.</h1>
+    <p class="lead">
+      Software engineer and FIRST Robotics coach in Salt Lake City. I build
+      things like game mods, robotics components, and 3D-printed hardware, and
+      write about how they come together.
+    </p>
   </article>
+
+  <section class="prose">
+    <div class="section-head">
+      <h2>Featured projects</h2>
+      <a class="section-head__link" href="/projects">See all →</a>
+    </div>
+    <div class="project-grid project-grid--teaser">
+      {featured.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </section>
+
+  <section class="prose">
+    <h2>LeafLab</h2>
+    <p>
+      LeafLab is the consulting side; full-stack web development for small
+      businesses and founders who need a technical partner that actually ships. <a
+        href="/about">More about that →</a
+      >
+    </p>
+  </section>
 </Base>
+
+<style>
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .section-head h2 {
+    margin: 0;
+  }
+
+  .section-head__link {
+    font-size: 14px;
+    color: var(--link);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .section-head__link:hover {
+    text-decoration: underline;
+  }
+</style>

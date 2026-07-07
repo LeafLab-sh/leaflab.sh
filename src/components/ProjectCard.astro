@@ -1,0 +1,92 @@
+---
+import type { Project } from "../data/projects";
+
+type Props = Project;
+
+const { name, description, tags, link, status } = Astro.props;
+---
+
+<article class="project-card">
+  <div class="project-card__head">
+    <h3 class="project-card__name">{name}</h3>
+    {status && <span class="project-card__status">{status}</span>}
+  </div>
+  <p class="project-card__desc">{description}</p>
+  <ul class="project-card__tags">
+    {tags.map((tag) => <li class="project-card__tag">{tag}</li>)}
+  </ul>
+  <a
+    class="project-card__link"
+    href={link.href}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {link.label} →
+  </a>
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+  }
+
+  .project-card__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  .project-card__name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .project-card__status {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .project-card__desc {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .project-card__tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+  }
+
+  .project-card__tag {
+    font-size: 12px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 2px 10px;
+  }
+
+  .project-card__link {
+    margin-top: auto;
+    font-size: 14px;
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  .project-card__link:hover {
+    text-decoration: underline;
+  }
+</style>

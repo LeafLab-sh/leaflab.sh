@@ -166,3 +166,20 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project-grid--teaser {
+  margin-top: var(--space-3);
+}
