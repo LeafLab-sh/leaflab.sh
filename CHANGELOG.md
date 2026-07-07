@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.11.0...leaflab-website-v0.12.0) (2026-07-07)
+
+
+### Features
+
+* lea's pfp ([#38](https://github.com/LeafLab-sh/leaflab.sh/issues/38)) ([b6c9167](https://github.com/LeafLab-sh/leaflab.sh/commit/b6c9167a943a885da2bff48d8bc47802a944617f))
+
 ## [0.11.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.10.0...leaflab-website-v0.11.0) (2026-07-07)
 
 
