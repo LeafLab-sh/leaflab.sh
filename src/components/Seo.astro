@@ -82,3 +82,18 @@ const ogDescription = ogDesc.length == 0 ? description : ogDesc;
     />
   ))
 }
+
+<!-- Google tag (gtag.js) -->
+<script
+  type="text/partytown"
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-FVS0EPJ6GZ"></script>
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-FVS0EPJ6GZ");
+</script>

@@ -18,7 +18,14 @@ export default defineConfig({
     imageService: "compile",
   }),
 
-  integrations: [sitemap(), partytown()],
+  integrations: [
+    sitemap(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()],
