@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.13.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.12.0...leaflab-website-v0.13.0) (2026-07-08)
+
+
+### Features
+
+* github analytics ([#46](https://github.com/LeafLab-sh/leaflab.sh/issues/46)) ([be90bd6](https://github.com/LeafLab-sh/leaflab.sh/commit/be90bd6449b6a47fd3bf7d1afaa0b3624bb4f705))
+* use favicon from leafairbanks.com ([#45](https://github.com/LeafLab-sh/leaflab.sh/issues/45)) ([38e085a](https://github.com/LeafLab-sh/leaflab.sh/commit/38e085a6b3fa2c3584648a8cf7e0ef83260c25fd))
+
 ## [0.12.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.11.0...leaflab-website-v0.12.0) (2026-07-07)
 
 
