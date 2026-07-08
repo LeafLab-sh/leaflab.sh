@@ -33,6 +33,22 @@ const computedOgType: "website" | "article" =
 const ogDescription = ogDesc.length == 0 ? description : ogDesc;
 ---
 
+<!-- Google tag (gtag.js) -->
+<script
+  async
+  is:inline
+  type="text/partytown"
+  src="https://www.googletagmanager.com/gtag/js?id=G-FVS0EPJ6GZ"></script>
+<script type="text/partytown" is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "G-FVS0EPJ6GZ");
+</script>
+
 <title>{title}</title>
 
 <meta charset="utf-8" />
@@ -82,18 +98,3 @@ const ogDescription = ogDesc.length == 0 ? description : ogDesc;
     />
   ))
 }
-
-<!-- Google tag (gtag.js) -->
-<script
-  type="text/partytown"
-  async
-  src="https://www.googletagmanager.com/gtag/js?id=G-FVS0EPJ6GZ"></script>
-<script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-
-  gtag("config", "G-FVS0EPJ6GZ");
-</script>
