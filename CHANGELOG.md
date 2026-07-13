@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.13.0...leaflab-website-v0.13.1) (2026-07-10)
+
+
+### Bug Fixes
+
+* site.name display in apple icon ([#48](https://github.com/LeafLab-sh/leaflab.sh/issues/48)) ([42a2469](https://github.com/LeafLab-sh/leaflab.sh/commit/42a2469f981ca5dc844da0691a996afcd3b4969a))
+
 ## [0.13.0](https://github.com/LeafLab-sh/leaflab.sh/compare/leaflab-website-v0.12.0...leaflab-website-v0.13.0) (2026-07-08)
 
 
