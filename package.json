@@ -31,7 +31,7 @@
     "husky": "^9.1.7",
     "install": "^0.13.0",
     "jose": "^6.2.3",
-    "prettier": "^3.9.4",
+    "prettier": "^3.9.5",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "pretty-quick": "^4.2.2",
