@@ -46,7 +46,7 @@ Wrangler environments are configured in `wrangler.jsonc`: the default environmen
 
 Releases are automated via [release-please](https://github.com/googleapis/release-please) (`.github/workflows/release-please.yml`):
 
-1. Every push to `main` triggers release-please, which reads conventional commits since the last release and opens (or updates) a release PR that bumps `package.json`, updates `CHANGELOG.md`, and tags the release.
+1. Every push to `main` triggers release-please, which reads conventional commits since the last release and opens (or updates) a release PR that bumps `package.json` and updates `CHANGELOG.md`. Merging it tags `vX.Y.Z` and creates the GitHub release. release-please acts as the `leaflab-automation` App, the only actor the org lets create `v*` tags (`standards/releases`), so nobody tags by hand. Tags up to `leaflab-website-v0.13.0` used the old format; `bootstrap-sha` in `release-please-config.json` bridges to the first `v*` release.
 2. Every push to `main` also triggers an automatic deploy to `leaflab-website-dev` (`leaflab-website-dev.leaflab.workers.dev`) via the Cloudflare app integration (not a GitHub Actions job).
 3. When the release PR is merged, `deploy-production` runs and deploys to the `leaflab-website` Cloudflare Worker with the `leaflab.sh` custom domain, via the `production` GitHub environment.
 

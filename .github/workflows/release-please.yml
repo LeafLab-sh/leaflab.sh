@@ -15,10 +15,19 @@ jobs:
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
     steps:
+      # Only leaflab-automation may create v* tags (org ruleset), so there is
+      # no fallback to GITHUB_TOKEN: without the App's key this step fails.
+      - name: Take a token as the automation App
+        id: app
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.LEAFLAB_AUTOMATION_CLIENT_ID }}
+          private-key: ${{ secrets.LEAFLAB_AUTOMATION_PRIVATE_KEY }}
+
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         id: release
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app.outputs.token }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
