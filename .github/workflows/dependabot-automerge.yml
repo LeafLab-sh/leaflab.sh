@@ -2,28 +2,17 @@ name: Dependabot Automerge
 
 on:
   pull_request:
+    types: [opened, reopened]
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  automerge:
-    if: github.actor == 'dependabot[bot]'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
-        id: metadata
-
-      - name: Approve PR
-        run: gh pr review --approve "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enable auto-merge
-        if: steps.metadata.outputs.update-type == 'version-update:semver-patch' || steps.metadata.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr merge --auto --rebase "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  dependabot:
+    uses: LeafLab-sh/shared-workflows/.github/workflows/dependabot-auto-merge.yml@29c3f0246fbb68e1abb1bbbf35d06c84f5c4df54 # v1.1.0
+    with:
+      approve: true
+      app-client-id: ${{ vars.LEAFLAB_AUTOMATION_CLIENT_ID }}
+    secrets:
+      app-private-key: ${{ secrets.LEAFLAB_AUTOMATION_PRIVATE_KEY }}
