@@ -19,7 +19,7 @@
   "dependencies": {
     "@astrojs/check": "0.9.12",
     "@astrojs/cloudflare": "14.1.4",
-    "@astrojs/partytown": "2.1.7",
+    "@astrojs/partytown": "2.1.9",
     "@astrojs/sitemap": "3.7.3",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
