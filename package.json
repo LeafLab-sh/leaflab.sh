@@ -1,7 +1,7 @@
 {
   "name": "leaflab-website",
   "type": "module",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "engines": {
     "bun": ">=1.2.0"
   },
